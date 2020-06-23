@@ -33,6 +33,13 @@ namespace RapidCMS.Core.Resolvers.Convention
                 });
             };
             var paneButtons = new List<ButtonConfig>();
+            if (features.HasFlag(Features.CanGoToView))
+            {
+                paneButtons.Add(new DefaultButtonConfig
+                {
+                    ButtonType = DefaultButtonType.View
+                });
+            }
             if (features.HasFlag(Features.CanGoToEdit))
             {
                 paneButtons.Add(new DefaultButtonConfig

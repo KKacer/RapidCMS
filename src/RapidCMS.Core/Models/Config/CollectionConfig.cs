@@ -235,9 +235,12 @@ namespace RapidCMS.Core.Models.Config
 
         public ICollectionConfig<TEntity> ConfigureByConvention(CollectionConvention convention = CollectionConvention.ListViewNodeEditor)
         {
+            // TODO: add ListViewNodeView (to seperate between listview and listview with node view)
             if (convention == CollectionConvention.ListView || convention == CollectionConvention.ListViewNodeEditor)
             {
-                ListView = new ConventionListViewConfig<TEntity>(canGoToNodeEditor: convention == CollectionConvention.ListViewNodeEditor);
+                ListView = new ConventionListViewConfig<TEntity>(
+                    canGoToNodeEditor: convention == CollectionConvention.ListViewNodeEditor,
+                    canGoToNodeView: convention == CollectionConvention.ListView);
             }
             if (convention == CollectionConvention.ListEditor)
             {
