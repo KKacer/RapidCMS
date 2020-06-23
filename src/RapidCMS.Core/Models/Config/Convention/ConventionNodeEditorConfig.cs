@@ -7,13 +7,16 @@ namespace RapidCMS.Core.Models.Config.Convention
     internal class ConventionNodeEditorConfig<TEntity> : NodeConfig, IIsConventionBased
         where TEntity : IEntity
     {
-        public ConventionNodeEditorConfig() : base(typeof(TEntity))
+        public ConventionNodeEditorConfig(bool allowsNodeEditing) : base(typeof(TEntity))
         {
+            AllowsNodeEditing = allowsNodeEditing;
         }
+
+        public bool AllowsNodeEditing { get; }
 
         public Features GetFeatures()
         {
-            return Features.CanEdit;
+            return AllowsNodeEditing ? Features.CanEdit : Features.None;
         }
     }
 }

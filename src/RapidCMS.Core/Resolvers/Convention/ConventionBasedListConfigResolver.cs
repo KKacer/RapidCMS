@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RapidCMS.Core.Abstractions.Resolvers;
+using RapidCMS.Core.Abstractions.Setup;
 using RapidCMS.Core.Enums;
 using RapidCMS.Core.Models.Config;
 
@@ -16,7 +17,7 @@ namespace RapidCMS.Core.Resolvers.Convention
             _fieldConfigResolver = fieldConfigResolver;
         }
 
-        public ListConfig ResolveByConvention(Type subject, Features features)
+        public ListConfig ResolveByConvention(Type subject, Features features, ICollectionSetup? collection)
         {
             var listButtons = new List<ButtonConfig>();
 
@@ -25,6 +26,10 @@ namespace RapidCMS.Core.Resolvers.Convention
                 listButtons.Add(new DefaultButtonConfig
                 {
                     ButtonType = DefaultButtonType.New
+                });
+                listButtons.Add(new DefaultButtonConfig
+                {
+                    ButtonType = DefaultButtonType.Return
                 });
             };
             var paneButtons = new List<ButtonConfig>();

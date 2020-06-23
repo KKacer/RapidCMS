@@ -7,6 +7,7 @@ namespace RapidCMS.Core.Enums
     {
         None = 0,
         CanGoToEdit = 1,
-        CanEdit = 2
+        CanView = 2,
+        CanEdit = 4
     }
 }
